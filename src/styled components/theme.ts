@@ -39,7 +39,7 @@ interface Theme {
     };
   }
   
-  // Define the theme object
+
   const theme: Theme = {
     typography: {
       sizes: {
@@ -62,7 +62,7 @@ interface Theme {
       primary: {
         dark: '#1F1D2B',
         soft: '#252836',
-        blueAccent: '#1C2D9D',
+        blueAccent: '#21B2D3',
       },
       secondary: {
         green: '#22B07D',

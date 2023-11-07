@@ -4,16 +4,22 @@ import AppRoutes from './router/AppRoutes';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from 'styled-components';
 import theme from './styled components/theme';
+import './app.css';
+import MoviesProvider from './context/MovieContext';
+
 
 
 const App: React.FC = () => {
   return (
-    <AuthProvider>
-       <ThemeProvider theme={theme}>
-      <Router>
+<Router>
+  <AuthProvider>
+    <ThemeProvider theme={theme}>
+      <MoviesProvider> 
         <AppRoutes />
-      </Router></ThemeProvider>
-    </AuthProvider>
+      </MoviesProvider>
+    </ThemeProvider>
+  </AuthProvider>
+</Router>
   );
 };
 

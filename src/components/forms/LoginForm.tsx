@@ -1,10 +1,15 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useAuth } from '../../context/AuthContext'; 
 import type { UserLoginData } from '../../types/UserLoginData';
+import { FormContainer, MainButton, } from '../../styled components/ui/FormUIComponents';
+import { InputField, Form } from '../../styled components/elements/FormElements';
+import FormNavbar from '../../styled components/elements/FormHeader';
+
+
 
 export const LoginForm = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<UserLoginData>();
-  const { login } = useAuth(); 
+  const { register, handleSubmit } = useForm<UserLoginData>();
+  const { login } = useAuth();
 
   const onSubmit: SubmitHandler<UserLoginData> = async (data) => {
     try {
@@ -15,22 +20,30 @@ export const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label>
-          Email:
-          <input type="email" {...register('email', { required: 'Email is required' })} />
-        </label>
-        {errors.email && <p>{errors.email.message}</p>}
-      </div>
-      <div>
-        <label>
-          Password:
-          <input type="password" {...register('password', { required: 'Password is required' })} />
-        </label>
-        {errors.password && <p>{errors.password.message}</p>}
-      </div>
-      <button type="submit">Sign in</button>
-    </form>
+    <>
+    <FormNavbar text="Log In" />
+    <img width="100" height="100" src="https://img.icons8.com/external-others-iconmarket/128/22C3E6/external-tv-valentines-day-others-iconmarket.png" alt="external-tv-valentines-day-others-iconmarket"/>
+    <FormContainer>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+      
+          <InputField 
+            label="Email Address" 
+            type="email" 
+            name="email"
+            register={register} 
+          />
+      
+        
+          <InputField 
+            label="Password" 
+            type="password" 
+            name="password"
+            register={register} 
+          />
+       
+        <MainButton type="submit">Sign in</MainButton>
+      </Form>
+    </FormContainer></>
   );
 };
+

@@ -1,9 +1,4 @@
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import { render } from 'react-dom'; // Corrected import
-import  App from './App'; // Assuming App is a default export
-import './index.css';
+import ReactDOM from "react-dom/client";
+import  App  from "./App.tsx";
 
-const rootElement = document.getElementById('app');
-if (rootElement) {
-  render(<App />, rootElement);
-}
+ReactDOM.createRoot(document.getElementById("root")!).render(<App />);

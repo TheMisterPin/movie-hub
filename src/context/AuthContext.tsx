@@ -1,7 +1,10 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserLoginData } from '../types/UserLoginData';
-
+function getErrorMessage(error: unknown): string {
+  if (error instanceof Error) return error.message;
+  return String(error);
+}
 interface AuthState {
   sessionToken: string;
   isLogin: boolean;
@@ -15,14 +18,14 @@ const initialState: AuthState = {
 };
 
 type AuthAction =
-  | { type: 'LOGIN_SUCCESS'; payload: string }
-  | { type: 'LOGIN_FAILURE'; payload: string }
-  | { type: 'LOGOUT' };
+| { type: 'LOGIN_SUCCESS'; payload: { sessionToken: string } }
+| { type: 'LOGIN_FAILURE'; payload: { errorMessage: string }  }
+| { type: 'LOGOUT' };
 
 interface AuthContextType {
   authState: AuthState;
   login: (data: UserLoginData) => Promise<void>;
-  register: (data: UserLoginData) => Promise<void>;
+  registerUser: (data: UserLoginData) => Promise<void>;
   logout: () => void;
 }
 
@@ -32,10 +35,10 @@ const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 function authReducer(state: AuthState, action: AuthAction): AuthState {
   switch (action.type) {
-    case 'LOGIN_SUCCESS':
-      return { ...state, isLogin: true, sessionToken: action.payload, error: '' };
+case 'LOGIN_SUCCESS':
+      return { ...state, isLogin: true, sessionToken: action.payload.sessionToken, error: '' };
     case 'LOGIN_FAILURE':
-      return { ...state, isLogin: false, error: action.payload };
+      return { ...state, isLogin: false, error: action.payload.errorMessage };
     case 'LOGOUT':
       return { ...initialState };
     default:
@@ -47,42 +50,37 @@ export const AuthProvider = ({ children }: ProviderProps) => {
   const [authState, dispatch] = useReducer(authReducer, initialState);
   const navigate = useNavigate();
 
-  const login = async (data: UserLoginData) => {
-    const response = await fetch('http://localhost:2323/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-      credentials: 'include',
-    });
+  const authenticate = async (url: string, data: UserLoginData) => {
+    try {    console.log('Data object:', data);
+        console.log('Data being sent:', JSON.stringify(data));
 
-    if (response.ok) {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+    
+
+        body: JSON.stringify(data),
+   
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        dispatch({ type: 'LOGIN_FAILURE', payload: { errorMessage: getErrorMessage(errorData) } });
+        return;
+      }
+
       const result = await response.json();
-      dispatch({ type: 'LOGIN_SUCCESS', payload: result.sessionToken });
-      navigate('/home');
-    } else {
-      const error = await response.text();
-      dispatch({ type: 'LOGIN_FAILURE', payload: error });
+      dispatch({ type: 'LOGIN_SUCCESS',  payload: { sessionToken: result.sessionToken } });
+      setTimeout(() => navigate('/home'), 0); 
+    } catch (error) {
+      dispatch({ type: 'LOGIN_FAILURE', payload: { errorMessage: getErrorMessage(error) } });
     }
   };
 
-  const register = async (data: UserLoginData) => {
-    const response = await fetch('http://localhost:2323/auth/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-
-    if (response.ok) {
-      navigate('/login');
-    } else {
-      const error = await response.text();
-      dispatch({ type: 'LOGIN_FAILURE', payload: error });
-    }
-  };
+  const login = (data: UserLoginData) => authenticate('http://localhost:2323/auth/login', data);
+  const registerUser = (data: UserLoginData) => authenticate('http://localhost:2323/auth/register', data);
 
   const logout = () => {
     dispatch({ type: 'LOGOUT' });
@@ -90,7 +88,7 @@ export const AuthProvider = ({ children }: ProviderProps) => {
   };
 
   return (
-    <AuthContext.Provider value={{ authState, login, register, logout }}>
+    <AuthContext.Provider value={{ authState, login, registerUser, logout }}>
       {children}
     </AuthContext.Provider>
   );
