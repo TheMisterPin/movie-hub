@@ -1,7 +1,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { UserLoginData } from '../../types/UserLoginData';
 import { FormContainer, MainButton,  } from '../../styled components/ui/FormUIComponents';
-import FormNavbar from '../../styled components/elements/FormHeader';
+import FormHeader from '../../styled components/elements/FormHeader';
 import { Form, InputField } from '../../styled components/elements/FormElements';
 
 export const SignUpForm = () => {
@@ -33,7 +33,7 @@ export const SignUpForm = () => {
 
   return (
     <>
-      <FormNavbar text="Sign Up" />
+      <FormHeader text="Sign Up" />
       <img width="100" height="100" src="https://img.icons8.com/external-others-iconmarket/128/22C3E6/external-tv-valentines-day-others-iconmarket.png" alt="external-tv-valentines-day-others-iconmarket"/>
       <FormContainer>
         <Form onSubmit={handleSubmit(onSubmit)}>

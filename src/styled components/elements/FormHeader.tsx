@@ -37,11 +37,11 @@ const Title = styled.h3`
 
 
 
-interface FormNavbarProps {
+interface FormHeaderProps {
   text: string;
 }
 
-const FormNavbar: React.FC<FormNavbarProps> = ({ text }) => {
+const FormHeader: React.FC<FormHeaderProps> = ({ text }) => {
   const navigate = useNavigate();
 
   return (
@@ -52,4 +52,4 @@ const FormNavbar: React.FC<FormNavbarProps> = ({ text }) => {
   );
 };
 
-export default FormNavbar;
+export default FormHeader;

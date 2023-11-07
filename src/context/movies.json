@@ -1,0 +1,193 @@
+[
+    {
+        "title": "John Wick",
+      "rating": 4.4,
+      "votes": 19,
+  
+      "description": "A retired hitman, John Wick, seeks vengeance against the ruthless Russian mobsters who wronged him. With a relentless pursuit and a legendary set of skills, Wick unleashes a torrent of violence in a quest for justice that takes him deep into the underworld of assassins.",
+      "poster": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/fZPSd91yGE9fCcCe6OoQr6E3Bev.jpg",
+      "genre": "Action",
+      "length": 101,
+  
+      "trailer": "https://www.youtube.com/watch?v=C0BMx-qxsP4",
+      "year": 2014
+    },
+    {     "title": "Gladiator",
+      "rating": 4.8,
+      "votes": 17,
+      "description": "Maximus, a betrayed Roman general, seeks revenge against the corrupt Emperor Commodus, who murdered his family and sent him into slavery. Maximus rises as a gladiator, seeking to challenge the empire's tyranny in the deadly arena while leading a revolt against the oppressive regime.",
+      "poster": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg",
+      "genre": "Action",
+      "length": 155,
+  
+      "trailer": "https://www.youtube.com/watch?v=P5ieIbInFpg",
+      "year": 2000
+    },
+    {
+  
+      "title": "Inception",
+      "rating": 4.9,
+      "votes": 20,
+      "description": "Dom Cobb is a skilled thief, but his unique expertise lies in entering the dreams of others to steal their secrets. He is hired for one last job, but this time it's to plant an idea rather than steal it. Cobb and his team embark on a mind-bending journey through multiple layers of reality, where the line between dreams and reality blurs.",
+      "poster": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
+      "genre": "Action",
+      "length": 148,
+  
+      "trailer": "https://www.youtube.com/watch?v=YoHD9XEInc0",
+      "year": 2010
+    },
+    {
+      "title": "The Matrix",
+      "rating": 4.7,
+      "votes": 20,
+      "description": "Neo, a computer hacker, discovers that humanity is enslaved by machines in a simulated reality known as the Matrix. Joined by a group of rebels, including Morpheus and Trinity, Neo must embrace his destiny as 'The One' and lead the fight against the machines in a mind-bending battle for freedom.",
+      "poster": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
+      "genre": "Action",
+      "length": 136,
+  
+      "trailer": "https://www.youtube.com/watch?v=vKQi3bBA1y8",
+      "year": 1999
+    },
+    {
+     
+      "title": "Kill Bill: Vol. 1",
+      "rating": 4.1,
+      "votes": 16,
+      "description": "The Bride, a former assassin, awakens from a coma determined to exact revenge on her former colleagues, the Deadly Viper Assassination Squad, who betrayed her and left her for dead. Armed with deadly skills and a list of targets, she embarks on a blood-soaked journey of vengeance.",
+      "poster": "https://www.themoviedb.org/t/p/w94_and_h141_bestv2/v7TaX8kXMXs5yFFGR41guUDNcnB.jpg",
+      "genre": "Action",
+      "length": 111,
+  
+      "trailer": "https://www.youtube.com/watch?v=7kSuas6mRpk",
+      "year": 2003
+    },
+    
+      {
+      "title": "Kill Bill: Vol. 2",
+      "rating": 4.3,
+      "votes": 15,
+      "description": "The Bride continues her quest for vengeance against her former boss and lover Bill, the reclusive bouncer Budd, and the treacherous, one-eyed Elle.",
+      "poster": "https://www.themoviedb.org/t/p/w94_and_h141_bestv2/2yhg0mZQMhDyvUQ4rG1IZ4oIA8L.jpg",
+      "genre": "Action",
+      "length": 136,
+  
+      "trailer": "https://www.youtube.com/watch?v=WTt8cCIvGYI",
+      "year": 2004
+    },
+     {
+      "title": "The Shining",
+      "description": "Jack Torrance, a struggling writer, takes a job as the winter caretaker of the remote Overlook Hotel with his family. As they become isolated in the eerie, snowbound hotel, supernatural forces and the hotel's dark history gradually drive Jack into madness.",
+      "poster": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/upBsuweJjBftrkJGqVf8PHCdH0l.jpg",
+      "genre": "Horror",
+      "length": 146,
+      "rating": 4.5,
+      "votes": 28,
+      "trailer": "https://www.youtube.com/watch?v=5Cb3ik6zP2I",
+      "year": 1980
+    },
+    {
+      "title": "The Exorcist",
+      "description": "When a young girl named Regan displays disturbing behavior, her mother seeks the help of two priests to perform an exorcism. As they confront the demonic presence within Regan, they face their own inner demons and a battle against evil.",
+      "poster": "The Exorcist",
+      "genre": "Horror",
+      "length": 122,
+      "rating": 4.6,
+      "votes": 30,
+      "trailer": "https://www.youtube.com/watch?v=YDGw1MTEe9k",
+      "year": 1973
+    },
+    {
+      "title": "Hereditary",
+      "description": "After the death of her secretive grandmother, Annie Graham and her family begin to unravel cryptic and terrifying secrets about their ancestry. Supernatural occurrences and family trauma collide in a disturbing and atmospheric horror film.",
+      "poster": "https://www.themoviedb.org/t/p/w94_and_h141_bestv2/p9fmuz2Oj3HtEJEqbIwkFGUhVXD.jpg",
+      "genre": "Horror",
+      "length": 127,
+      "rating": 3.3,
+      "votes": 25,
+      "trailer": "hereditary trailer movie",
+      "year": 2018
+    },
+    {
+      "title": "Get Out",
+      "description": "A young African American man visits his white girlfriend's family estate, where he uncovers disturbing secrets about the residents and their intentions. This thought-provoking horror film explores themes of racism and social commentary.",
+      "poster": "https://www.themoviedb.org/t/p/w94_and_h141_bestv2/tFXcEccSQMf3lfhfXKSU9iRBpa3.jpg",
+      "genre": "Horror",
+      "length": 104,
+      "rating": 4.4,
+      "votes": 27,
+      "trailer": "https://www.youtube.com/watch?v=DzfpyUB60YY",
+      "year": 2017
+    },
+    {
+      "title": "A Quiet Place",
+      "description": "In a world terrorized by mysterious creatures that hunt by sound, a family must live in silence to survive. This suspenseful thriller emphasizes the power of silence and family bonds in the face of deadly threats.",
+      "poster": "https://www.themoviedb.org/movie/447332-a-quiet-place",
+      "genre": "Horror",
+      "length": 90,
+      "rating": 4.1,
+      "votes": 23,
+      "trailer": "https://www.youtube.com/watch?v=WR7cc5t7tv8",
+      "year": 2018
+    },
+    {
+      "title": "The Conjuring",
+      "description": "Based on real-life paranormal investigators Ed and Lorraine Warren, this film follows them as they help a family terrorized by malevolent spirits in their farmhouse. The film combines supernatural scares with a compelling storyline.",
+      "poster": "https://www.themoviedb.org/t/p/w94_and_h141_bestv2/wVYREutTvI2tmxr6ujrHT704wGF.jpg",
+      "genre": "Horror",
+      "length": 112,
+      "rating": 4.5,
+      "votes": 26,
+      "trailer": "https://www.youtube.com/watch?v=k10ETZ41q5o&pp=ygUVdGhlIGNvbmp1cmluZyB0cmFpbGVy",
+      "year": 2013
+    },
+    {
+      "title": "Psycho",
+      "description": "Marion Crane embezzles money and checks into the Bates Motel, where she encounters the reclusive owner, Norman Bates. Directed by Alfred Hitchcock, this classic thriller explores themes of identity and madness in a suspenseful and shocking narrative.",
+      "poster": "https://www.themoviedb.org/t/p/w94_and_h141_bestv2/yz4QVqPx3h1hD1DfqqQkCq3rmxW.jpg",
+      "genre": "Horror",
+      "length": 109,
+      "rating": 4.7,
+      "votes": 31,
+      "trailer": "https://www.youtube.com/watch?v=NG3-GlvKPcg",
+      "year": 1960
+    },
+    {
+      "title": "The Babadook",
+      "description": "A single mother and her young son are haunted by a sinister presence that emerges from a mysterious children's book. As their lives unravel, they must confront their deepest fears to survive.",
+      "poster": "",
+      "genre": "Horror",
+      "length": 93,
+      "rating": 4.0,
+      "votes": 22,
+      "trailer": "https://www.youtube.com/watch?v=k5WQZzDRVtw",
+      "year": 2014
+    },
+    {
+      "title": "The Witch",
+      "description": "Set in 1630s New England, a Puritan family encounters supernatural forces in the woods beyond their farm, leading to paranoia, religious hysteria, and a descent into madness. This film offers a chilling and atmospheric experience.",
+      "poster": "https://www.themoviedb.org/t/p/w94_and_h141_bestv2/4i2wo2ja5g2PmUxWa1a2eYIboZf.jpg",
+      "genre": "Horror",
+      "length": 92,
+      "rating": 4.2,
+      "votes": 24,
+      "trailer": "https://www.youtube.com/watch?v=iQXmlf3Sefg",
+      "year": 2015
+    },
+    {
+      "title": "It Follows",
+      "description": "After a sexual encounter, a young woman finds herself pursued by a relentless supernatural entity that can take on different forms. She and her friends must find a way to escape the curse before it's too late.",
+      "poster": "https://www.themoviedb.org/t/p/w94_and_h141_bestv2/iwnQ1JH1wdWrGYkgWySptJ5284A.jpg",
+      "genre": "Horror",
+      "length": 100,
+      "rating": 3.9,
+      "votes": 21,
+      "trailer": "https://www.youtube.com/watch?v=HkZYbOH0ujw",
+      "year": 2014
+    }
+  ]
+  
+   
+  
+  
+  
+  

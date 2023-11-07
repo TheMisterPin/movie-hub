@@ -1,64 +1,55 @@
 import React from 'react';
+import styled from 'styled-components';
+import { Movie, useMovies } from '../context/MovieContext';
 import { MovieCard } from '../components/card/MovieCard';
-import { useMovies, Movie } from '../context/MovieContext';
-import { ScrollableRowComponent } from '../components/homeContainers/ScrollableRow';
 
 
+// Add your theme color and text size here as used in MovieCard
+const HomePageContainer = styled.div`
+background: ${({ theme }) => theme.colors.primary.dark};
+  color: white;
+  min-height: 100vh;
+  padding: 20px;
+`;
 
-function shuffleArray<T>(array: T[]): T[] {
-  let currentIndex = array.length, randomIndex;
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+`;
 
-  while (currentIndex !== 0) {
+const ListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
+// Function to pick 4 random movies
+const getRandomMovies = (movies: Movie[], count: number): Movie[] => {
+  const shuffled = [...movies].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
+};
 
-
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex], array[currentIndex]];
-  }
-
-  return array;
-}
-
-export const Home: React.FC = () => {
-  const { movies} = useMovies();
-
-  const renderMovieSection = (sectionMovies: Movie[]) => {
-    return sectionMovies.map((movie: Movie, index: number) => (
-     
-        <MovieCard
-          variant="card"
-          key={movie.id || index.toString()}
-        
-        />
-    ));
-  };
-
-
-  const getRandomMovies = (count: number): Movie[] => {
-    const shuffledMovies = shuffleArray([...movies]);
-    return shuffledMovies.slice(0, count);
-  };
-
-  const sectionTitles: string[] = [
-    'New Releases',
-    'Classics',
-    'Fan Favorites',
-    'Award Winners',
-    'Action Packed',
-  ];
+// Home Page Component
+export const Home: React.FC<{ movies: Movie[] }> = () => {
+  const { movies } = useMovies()
+  const randomMovies = getRandomMovies(movies, 4); 
 
   return (
-    <div>
-      {sectionTitles.map((sectionTitle) => (
-        <React.Fragment key={sectionTitle}>
-          <h2>{sectionTitle}</h2>
-          <ScrollableRowComponent>
-            {renderMovieSection(getRandomMovies(5))}
-          </ScrollableRowComponent>
-        </React.Fragment>
-      ))}
-    </div>
+    <HomePageContainer>
+      <h1>Featured Movies</h1>
+      <h2>Grid View</h2>
+      <GridContainer>
+        {randomMovies.map((movie) => (
+          <MovieCard key={movie.title} movie={movie} variant="grid" />
+        ))}
+      </GridContainer>
+      <h2>List View</h2>
+      <ListContainer>
+        {randomMovies.map((movie) => (
+          <MovieCard key={movie.title} movie={movie} variant="list" />
+        ))}
+      </ListContainer>
+    </HomePageContainer>
   );
 };

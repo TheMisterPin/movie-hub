@@ -11,7 +11,7 @@ const LandingContainer = styled.div`
   justify-content: center;
   width: 100%;
   height: 100vh;
-  background-color: #181725;`
+  background-color:  ${({ theme }) => theme.colors.primary.dark};`
 
 
 
