@@ -1,24 +1,21 @@
-import { FormProps, FormContainer, PageTitle, LinkButton, BodyText, FormLink} from '../../styled components/';
+import { useAuth0 } from "@auth0/auth0-react";
+import { SignUpForm } from './SignUpForm';
+import { FormContainer, PageTitle, LinkButton, BodyText, FormLink  } from "../../styled components";
 
 
+export const LandingForm = () => {
 
-export const LandingForm: React.FC<FormProps> = ({ setCurrentForm }) => {
+  
 
-  const handleSetCurrentForm = (formName: string) => {
-    if (setCurrentForm) {
-      setCurrentForm(formName);
-    } else {
-      
-      console.error(`Error: 'setCurrentForm' function is not defined but is required to navigate to the '${formName}' form.`);
-    }
-  };
+  const { loginWithRedirect } = useAuth0();
+
 
   return (
     <FormContainer>
       <img width="100" height="100" src="https://img.icons8.com/external-others-iconmarket/128/22C3E6/external-tv-valentines-day-others-iconmarket.png" alt="external-tv-valentines-day-others-iconmarket"/>
       <PageTitle> MovieHub</PageTitle>
-      <LinkButton onClick={() => handleSetCurrentForm('login')}> Login </LinkButton>
-      <BodyText> Don't have an account? <FormLink onClick={() => handleSetCurrentForm('register')}> Register </FormLink></BodyText>
+      <LinkButton onClick={() => loginWithRedirect()}> Login </LinkButton>
+      <BodyText> Don't have an account? <FormLink onClick={() =>SignUpForm }> Register </FormLink></BodyText>
     </FormContainer>
   )
 }

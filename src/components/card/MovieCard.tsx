@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StarRating } from '../../styled components/ui/StarRating';
-import { Link } from 'react-router-dom';
 import { useTimeFormatter } from '../../hooks/useTimeFormatterTester';
+import { Link, } from 'react-router-dom';
 
 
 const showMore = "https://img.icons8.com/sf-regular-filled/96/21b2d3/more.png"
@@ -16,10 +16,9 @@ const extractYouTubeID = (url: string): string | null => {
 };
 
 
-
 // Movie type
 export type Movie = {
-  // id: string;
+  id: string;
   title: string;
   year: number;
   genre: string;
@@ -33,6 +32,7 @@ export type Movie = {
 
 // MovieCard props
 type MovieCardProps = {
+
   movie: Movie
   variant: "grid" | "list" | "card" | "fullscreen"
 }
@@ -55,16 +55,15 @@ const Card = styled.li`
   user-select: none;
   margin: (0.2rem 0 );
 `;
-const FullScreenCard = styled(Card)`
-  display: flex;
+const FullScreenCard = styled.div`
+display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   color: white;
-  border-radius: 10px;
   user-select: none;
   margin: 0;
   width: 100vw;
-  height: fit-content;
+  z-index: 3;
 
 `;
 
@@ -74,6 +73,7 @@ const CardImage = styled.img`
 const FullScreenCardImage = styled.img`
   width: 15rem;
   border-radius: 8px;
+  z-index: 3;
   box-shadow: 
     0 4px 6px rgba(0,0,0,0.1),        
     0 1px 3px rgba(0,0,0,0.2),         
@@ -93,7 +93,7 @@ const BackgroundImage = styled.div<{ poster: string }>`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  z-index: -1; // Keep it behind all other content
+  z-index: 2; 
 `;
 const BackgroundColorLayer = styled.div`
   position: absolute;
@@ -113,7 +113,7 @@ const CardDescription = styled.div`
 
 const ListCard = styled(Card)`
   width: 85%;
-  background-color: #6a6a6a;
+  background: ${({ theme }) => theme.colors.primary.soft};
   color: white;
   display: flex;
   border-radius: 10px;
@@ -142,24 +142,24 @@ const ListCardDescription = styled(CardDescription)`
 `;
 
 const GridCard = styled(Card)`
-  height: 3rem;
+  height: 5rem;
   width: 10rem;
   display: flex;
   flex-direction: column;
   background-color: #6a6a6a;
-  margin-top: 0.3rem;
+
   
 `;
 
 const GridCardImage = styled(CardImage)`
-  height: 3rem;
-  width: 2.3rem;
+  height: 5rem;
+  width: 4rem;
   
   
 `;
 
 const GridCardDescription = styled(CardDescription)`
-margin-left: 0.4rem;
+
   padding: 0;
   position: relative; 
  
@@ -183,8 +183,9 @@ font-size: 2.5rem;
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 0;
+  z-index: 3;
 `;
-const GridMovieTitle = styled.h5`
+const GridMovieTitle = styled.h6`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -196,6 +197,7 @@ const FullscreenMovieDetails = styled.p`
   font-size: 1.5rem;
   margin: 5px 0;
   text-align:center;
+  z-index: 3;
 `;
 const MovieDetalis = styled.p`
   color: #aaaaaa;
@@ -218,13 +220,11 @@ const StyledIFrame = styled.iframe`
   height: 200px; 
   border-radius: 8px;
   border: none`
-const ShowMoreButton = styled(Link)`
-background-image: url(${showMore};
-background-color: ${({ theme }) => theme.colors.primary.dark}`
+
 
 // Main MovieCard Component
 export const MovieCard: React.FC<MovieCardProps> = ({ movie, variant = "card" }) => {
-  const formatMinutes = useTimeFormatter();
+  const formatMinutes = useTimeFormatter()
   const formattedLength = movie.length ? formatMinutes(movie.length) : null;
   const videoID = movie.trailer ? extractYouTubeID(movie.trailer) : '';
   const DetailsComponent = variant === "fullscreen" ? FullscreenMovieDetails : MovieDetalis;
@@ -233,28 +233,29 @@ export const MovieCard: React.FC<MovieCardProps> = ({ movie, variant = "card" })
   const DescriptionComponent = variant === "grid" ? GridCardDescription : variant === "list" ? ListCardDescription : CardDescription;
   const TitleComponent = variant === "grid" ? GridMovieTitle : variant === "list" ? ListMovieTitle : FullScreenMovieTitle;
 
+
+
   if (!movie) return null;
 
   return (
     <>
       {variant === "fullscreen" && (
-        <>
-          <BackgroundColorLayer />
-          <BackgroundImage poster={movie.poster} />
-        </>
-      )}
+        <> <BackgroundColorLayer />
+          <BackgroundImage poster={movie.poster} /> </>)}
       <CardComponent>
-        
+        {variant === "fullscreen" && (
+          <TitleComponent>{movie.title}</TitleComponent>)}
         <ImageComponent src={movie.poster} alt={movie.title} />
-        
         <DescriptionComponent>
-          <TitleComponent>{movie.title}</TitleComponent>
+
           {variant !== "fullscreen" && (
-            <>
+            <><TitleComponent>{movie.title}</TitleComponent>
               <DetailsComponent>{movie.genre}</DetailsComponent>
               <DetailsComponent>{movie.year} {formattedLength}</DetailsComponent>
-              <DetailsComponent>Rating: {movie.rating}</DetailsComponent>
-              <ShowMoreButton to={`/movies/${movie.title}`} />
+              <Link to={`/movies/movie/${movie.title}`} style={{ backgroundImage: `url(${showMore})`, backgroundSize: 'cover' }}>
+                Show more
+              </Link>
+
             </>
           )}
           {variant === "fullscreen" && (
@@ -270,6 +271,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({ movie, variant = "card" })
               />
             </>
           )}
+
         </DescriptionComponent>
       </CardComponent>
     </>

@@ -10,6 +10,7 @@ interface Theme {
         h6: string;
         h7: string;
         body: string;
+        cardTitle: string;
       };
       weights: {
         semibold: number;
@@ -51,6 +52,7 @@ interface Theme {
         h6: '12px',
         h7: '10px',
         body: '12px',
+        cardTitle: '36px',
       },
       weights: {
         semibold: 600,

@@ -2,16 +2,19 @@ import styled from 'styled-components';
 import { Dispatch, SetStateAction } from 'react';
 import theme from "../theme";
 
+const iconBack="https://img.icons8.com/material-sharp/96/21b2d3/circled-chevron-left.png"
+
 export interface FormProps {
   setCurrentForm?: Dispatch<SetStateAction<string>>;
 }
 export const FormContainer = styled.div<FormProps> `
   display: flex;
   height: 90%;
-  flex-direction: column;
-  justify-content: center;
+ width : 100%;
+  flex-wrap: wrap;
+  justify-content: space-around;
   align-items: center;
-  gap: 3rem;
+  
  `;
 export const PageTitle = styled.h1`
  color: white;
@@ -48,6 +51,22 @@ export const Input = styled.input`
   color: ${theme.colors.text.white};
   border-radius: 5px;
   padding: 15px;
+  width: 45%;
+  font-size: ${theme.typography.sizes.body};
+  margin-bottom: 20px;
+  &::placeholder {
+    color: ${theme.colors.text.grey};
+  }
+`;
+
+export const DescriptionInput = styled.input`
+  background-color: ${theme.colors.primary.soft};
+  border: 1px solid ${theme.colors.text.lineDark};
+  color: ${theme.colors.text.white};
+  border-radius: 5px;
+  padding: 15px;
+  width: 95%;
+ 
   font-size: ${theme.typography.sizes.body};
   margin-bottom: 20px;
   &::placeholder {
@@ -84,3 +103,17 @@ export const IconButton = styled.button`
 
 export const FormNav = styled.nav`
 `
+
+;
+
+export const BackButton = styled.button`
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
+

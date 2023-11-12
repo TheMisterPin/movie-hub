@@ -3,15 +3,15 @@ import { NavLink as RouterNavLink } from 'react-router-dom';
 import { USER, HOME, UPLOAD, } from '../../router/routes/routePaths';
 
 const UserIcon = styled.img.attrs({
-    src: "https://img.icons8.com/badges/96/000000/user.png"
+    src: "https://img.icons8.com/badges/45/000000/user.png"
 })``;
 
 const HomeIcon = styled.img.attrs({
-    src: "https://img.icons8.com/hatch/64/home.png"
+    src: "https://img.icons8.com/hatch/45/home.png"
 })``;
 
 const UploadIcon = styled.img.attrs({
-    src: "https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/external-upload-interface-kiranshastry-lineal-kiranshastry.png"
+    src: "https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/45/external-upload-interface-kiranshastry-lineal-kiranshastry.png"
 })``;
 
 // Styled NavLink using styled-components
@@ -20,7 +20,7 @@ const NavLink = styled(RouterNavLink)`
   text-decoration: none;
   color: color: ${({ theme }) => theme.colors.text.white};
  
-  background : ${({ theme }) => theme.colors.primary.dark};
+  background : ${({ theme }) => theme.colors.primary.soft};
   padding: 10px; 
 
   // Icon default styles
@@ -40,9 +40,22 @@ const NavLink = styled(RouterNavLink)`
   }
 `;
 
+const Nav = styled.nav`
+margin:0;
+padding: 0 1rem;
+position: sticky;
+  bottom: 0;
+  left: 0;
+  z-index: 22;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  background: ${({ theme }) => theme.colors.primary.soft};
+  `
+
 const NavBar = () => {
     return (
-        <nav>
+        <Nav>
             <NavLink to={USER}>
                 <UserIcon />
             </NavLink>
@@ -52,7 +65,7 @@ const NavBar = () => {
             <NavLink to={UPLOAD}>
                 <UploadIcon />
             </NavLink>
-        </nav>
+        </Nav>
     );
 };
 
