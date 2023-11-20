@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { NavLink as RouterNavLink } from 'react-router-dom';
-import { USER, HOME, UPLOAD, } from '../../router/routes/routePaths';
+import {  HOME, UPLOAD, } from '../../router/routes/routePaths';
+import { useUsers } from '../../context/UserContex';
+
 
 const UserIcon = styled.img.attrs({
     src: "https://img.icons8.com/badges/45/000000/user.png"
@@ -14,7 +16,6 @@ const UploadIcon = styled.img.attrs({
     src: "https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/45/external-upload-interface-kiranshastry-lineal-kiranshastry.png"
 })``;
 
-// Styled NavLink using styled-components
 const NavLink = styled(RouterNavLink)`
   display: inline-block;
   text-decoration: none;
@@ -54,9 +55,13 @@ position: sticky;
   `
 
 const NavBar = () => {
-    return (
-        <Nav>
-            <NavLink to={USER}>
+  
+  const  {userLogged} = useUsers(); 
+
+  return (
+   
+    <Nav>
+        <NavLink to={`/user/${userLogged?.username}`}>
                 <UserIcon />
             </NavLink>
             <NavLink to={HOME}>

@@ -8,13 +8,10 @@ const ScrollableRow = styled.ul`
   overflow-x: auto;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
-
   &::-webkit-scrollbar {
     display: none;
   }
-
   scrollbar-width: none;
-
   -ms-overflow-style: none;
 `;
 

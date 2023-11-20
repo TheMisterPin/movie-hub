@@ -2,17 +2,16 @@ import styled from 'styled-components';
 import { Dispatch, SetStateAction } from 'react';
 import theme from "../theme";
 
-const iconBack="https://img.icons8.com/material-sharp/96/21b2d3/circled-chevron-left.png"
 
 export interface FormProps {
   setCurrentForm?: Dispatch<SetStateAction<string>>;
 }
 export const FormContainer = styled.div<FormProps> `
   display: flex;
-  height: 90%;
- width : 100%;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  height: 70%;
+ width : 80%;
+ flex-direction: column;
+  gap: 12%;
   align-items: center;
   
  `;

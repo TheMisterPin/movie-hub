@@ -15,7 +15,6 @@ const extractYouTubeID = (url: string): string | null => {
   return (match && match[2].length === 11) ? match[2] : null;
 };
 
-
 // Movie type
 export type Movie = {
   id: string;
@@ -33,7 +32,7 @@ export type Movie = {
 // MovieCard props
 type MovieCardProps = {
 
-  movie: Movie
+  movie: Movie 
   variant: "grid" | "list" | "card" | "fullscreen"
 }
 
@@ -48,10 +47,10 @@ type MovieCardProps = {
 
 
 const Card = styled.li`
-
-
+background: ${({ theme }) => theme.colors.primary.soft};
   color: white;
   border-radius: 10px;
+  width: 35%;
   user-select: none;
   margin: (0.2rem 0 );
 `;
@@ -68,7 +67,7 @@ display: flex;
 `;
 
 const CardImage = styled.img`
-  width: 25rem;
+  width: 38vw;
   border-radius: 8px;`
 const FullScreenCardImage = styled.img`
   width: 15rem;
@@ -105,7 +104,25 @@ const BackgroundColorLayer = styled.div`
   z-index: -2;
   height: auto;
 `;
+const SkeletonLoader = styled.div`
+  background-color: #ddd;
+  animation: shimmer 1.5s infinite linear;
+  @keyframes shimmer {
+    0% { background-position: -100% 0; }
+    100% { background-position: 100% 0; }
+  }
+`;
 
+const SkeletonImage = styled(SkeletonLoader)`
+  width: 100%;
+  height: 200px;
+`;
+
+const SkeletonText = styled(SkeletonLoader)`
+  width: 80%;
+  height: 20px;
+  margin: 5px 0;
+`;
 const CardDescription = styled.div`
   width: 100%;
   padding: 0.4rem;
@@ -162,6 +179,7 @@ const GridCardDescription = styled(CardDescription)`
 
   padding: 0;
   position: relative; 
+
  
 `;
 
@@ -199,7 +217,17 @@ const FullscreenMovieDetails = styled.p`
   text-align:center;
   z-index: 3;
 `;
-const MovieDetalis = styled.p`
+const CardMovieDetails = styled.p`
+  color: #aaaaaa;
+  font-size: 12px;
+  margin: 5px 0;
+`;
+const GridMovieDetails = styled.p`
+  color: #aaaaaa;
+  font-size: 12px;
+  margin: 5px 0;
+`;
+const ListMovieDetalis = styled.p`
   color: #aaaaaa;
   font-size: 12px;
   margin: 5px 0;
@@ -227,15 +255,49 @@ export const MovieCard: React.FC<MovieCardProps> = ({ movie, variant = "card" })
   const formatMinutes = useTimeFormatter()
   const formattedLength = movie.length ? formatMinutes(movie.length) : null;
   const videoID = movie.trailer ? extractYouTubeID(movie.trailer) : '';
-  const DetailsComponent = variant === "fullscreen" ? FullscreenMovieDetails : MovieDetalis;
-  const CardComponent = variant === "grid" ? GridCard : variant === "list" ? ListCard : FullScreenCard;
-  const ImageComponent = variant === "grid" ? GridCardImage : variant === "list" ? ListCardImage : FullScreenCardImage;
-  const DescriptionComponent = variant === "grid" ? GridCardDescription : variant === "list" ? ListCardDescription : CardDescription;
-  const TitleComponent = variant === "grid" ? GridMovieTitle : variant === "list" ? ListMovieTitle : FullScreenMovieTitle;
+  const DetailsComponent = variant === "card" ? CardMovieDetails : (variant === "list" ? ListMovieDetalis : (variant === "grid" ? GridMovieDetails : FullScreenCard));
+ 
+  const CardComponent = variant === "card" ? Card : (variant === "list" ? ListCard : (variant === "grid" ? GridCard : FullScreenCard));
+  const ImageComponent = variant === "card" ? CardImage : (variant === "list" ? ListCardImage : (variant === "grid" ? GridCardImage : FullScreenCardImage));
+  const DescriptionComponent = variant === "card" ? CardDescription : (variant === "list" ? ListCardDescription : (variant === "grid" ? GridCardDescription : CardDescription));
+  const TitleComponent = variant === "card" ? MovieTitle : (variant === "list" ? ListMovieTitle : (variant === "grid" ? GridMovieTitle : FullScreenMovieTitle));
 
-
-
-  if (!movie) return null;
+  if (!movie) {
+   
+    switch (variant) {
+      case 'grid':
+        return (
+          <GridCard>
+            <SkeletonImage />
+            <SkeletonText />
+          </GridCard>
+        );
+      case 'list':
+        return (
+          <ListCard>
+            <SkeletonImage />
+            <SkeletonText />
+          </ListCard>
+        );
+      case 'card':
+        return (
+          <Card>
+            <SkeletonImage />
+            <SkeletonText />
+          </Card>
+        );
+      case 'fullscreen':
+        return (
+          <FullScreenCard>
+            <SkeletonImage />
+            <SkeletonText />
+            <SkeletonText />
+          </FullScreenCard>
+        );
+      default:
+        return null;
+    }
+  }
 
   return (
     <>
@@ -247,16 +309,22 @@ export const MovieCard: React.FC<MovieCardProps> = ({ movie, variant = "card" })
           <TitleComponent>{movie.title}</TitleComponent>)}
         <ImageComponent src={movie.poster} alt={movie.title} />
         <DescriptionComponent>
-
-          {variant !== "fullscreen" && (
+          {variant === "card" && (
             <><TitleComponent>{movie.title}</TitleComponent>
               <DetailsComponent>{movie.genre}</DetailsComponent>
-              <DetailsComponent>{movie.year} {formattedLength}</DetailsComponent>
+              <Link to={`/movies/movie/${movie.title}`} style={{ backgroundImage: `url(${showMore})`, backgroundSize: 'cover' }}>
+                Show more
+              </Link> </>)}
+
+          {variant === "list" && (
+            <><TitleComponent>{movie.title}</TitleComponent>
+              <DetailsComponent>{movie.genre} {movie.year} {formattedLength}</DetailsComponent>
               <Link to={`/movies/movie/${movie.title}`} style={{ backgroundImage: `url(${showMore})`, backgroundSize: 'cover' }}>
                 Show more
               </Link>
 
             </>
+            
           )}
           {variant === "fullscreen" && (
             <>

@@ -1,5 +1,6 @@
 import  { useCallback, } from 'react';
-import { Movie, useMovies } from '../context/MovieContext';
+import { useMovies } from '../context/MovieContext';
+import { Movie } from '../types/MoviesContextType';
 import { MovieCard } from '../components/card/MovieCard';
 
 type LayoutVariant = 'grid' | 'list' | 'card' | 'full-screen';
