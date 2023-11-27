@@ -39,9 +39,11 @@ export const MoviesProvider: React.FC<ProviderProps> = ({ children }) => {
   const fetchMovies = async () => {
     try {
       const response = await axios.get('http://localhost:2323/movies');
-      setMovies(response.data);
       if (!response)
-        console.log('failed to connect to server');
+      console.log('failed to connect to server');
+    setMovies(response.data);
+    
+    
 
     } catch (error) {
       console.log('Failed to fetch movies:', error);
@@ -79,10 +81,14 @@ export const MoviesProvider: React.FC<ProviderProps> = ({ children }) => {
         console.log('failed to connect to server');
       if (!response.data) { console.log('no data found') }
       setMovies(response.data)
+
     } catch (error) {
       console.log('Failed to fetch movies:', error)
+
     }
   }
+
+
   const fetchMovieByTitle = async (title: Movie['title']) => {
     const encodedTitle = encodeURIComponent(title)
     const url = `http://localhost:2323/title/${encodedTitle}`
@@ -91,13 +97,13 @@ export const MoviesProvider: React.FC<ProviderProps> = ({ children }) => {
       console.log(`Movie with title "${title}":`, response.data)
       setSelectedMovie(response.data);
     } catch (error) {
-      console.error(`Error fetching movie with title "${title}":`, error)
+      console.error(`Error fetching movie with title ${title}:`, error)
       setSelectedMovie(null)
     }
   };
   const fetchGenreByName = async (genre: string) => {
     const encodedGenreName = encodeURIComponent(genre)
-    const url = `http://localhost:2323/title/${encodedGenreName}`
+    const url = `http://localhost:2323/title/"${encodedGenreName}"`
     try {
       const response = await axios.get(url);
       if (!response.data) {
@@ -111,7 +117,7 @@ export const MoviesProvider: React.FC<ProviderProps> = ({ children }) => {
   };
   const uploadMovie = async (username: User["username"], movieData: MovieData) => {
     const encodedUsername = encodeURIComponent(username)
-    const baseUrl = `http://localhost:2323/upload/${encodedUsername}`
+    const baseUrl = `http://localhost:2323/upload/"${encodedUsername}"`
     try {
       const response = await axios.post(baseUrl, movieData, {
 

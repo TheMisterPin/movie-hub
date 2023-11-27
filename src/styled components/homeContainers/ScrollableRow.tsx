@@ -11,9 +11,12 @@ const ScrollableRow = styled.ul`
   &::-webkit-scrollbar {
     display: none;
   }
+  list-decoration: none;
   scrollbar-width: none;
   -ms-overflow-style: none;
-`;
+  gap: 1rem
+`
+
 
 interface ScrollableRowProps {
   children: ReactNode;
@@ -24,4 +27,16 @@ export const ScrollableRowComponent: React.FC<ScrollableRowProps> = ({
   children,
 }) => {
   return <ScrollableRow>{children}</ScrollableRow>;
-};
+};// import { LoginForm } from '../components/forms/LoginForm';
+
+export function getRandomMovies(arr: Movie[], count: number): Movie[] {
+  const arrayCopy = [...arr];
+  const result: Movie[] = [];
+  for (let i = 0; i < Math.min(count, arrayCopy.length); i++) {
+    const randomIndex = Math.floor(Math.random() * arrayCopy.length);
+    result.push(arrayCopy[randomIndex]);
+    arrayCopy.splice(randomIndex, 1);
+  }
+  return result;
+}
+

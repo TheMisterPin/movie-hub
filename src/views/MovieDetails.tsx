@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useMovies } from '../context/MovieContext';
 import { MovieCard } from '../components/card/MovieCard';
 import NavBar from '../styled components/elements/NavBar';
-import { PageContainer } from '../components/homeContainers/PageContainer';
+import { PageContainer } from '../styled components/homeContainers/PageContainer';
 
 
 

@@ -51,6 +51,9 @@ background: ${({ theme }) => theme.colors.primary.soft};
   color: white;
   border-radius: 10px;
   width: 35%;
+  disdplay: flex;
+  align-items: center;
+  justify-content: center;
   user-select: none;
   margin: (0.2rem 0 );
 `;
@@ -67,7 +70,7 @@ display: flex;
 `;
 
 const CardImage = styled.img`
-  width: 38vw;
+  width: 35vw;
   border-radius: 8px;`
 const FullScreenCardImage = styled.img`
   width: 15rem;
@@ -312,7 +315,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({ movie, variant = "card" })
           {variant === "card" && (
             <><TitleComponent>{movie.title}</TitleComponent>
               <DetailsComponent>{movie.genre}</DetailsComponent>
-              <Link to={`/movies/movie/${movie.title}`} style={{ backgroundImage: `url(${showMore})`, backgroundSize: 'cover' }}>
+              <Link to={`/movies/movie/${movie.title}`} style={{color: 'white', backgroundImage: `url(${showMore})`, backgroundSize: 'cover' }}>
                 Show more
               </Link> </>)}
 

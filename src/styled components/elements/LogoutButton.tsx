@@ -1,6 +1,7 @@
+import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
 import styled from 'styled-components';
-import { useAuth } from '../../context/AuthContext';
+
 
 // Styled button component
 const StyledButton = styled.button`
@@ -25,7 +26,7 @@ const StyledButton = styled.button`
 `;
 
 const LogoutButton: React.FC = () => {
-  const { logout } = useAuth(); // Destructure the logout function from the context
+  const { logout } = useAuth0(); // Destructure the logout function from the context
 
   return (
     <StyledButton onClick={() => logout()}>Logout</StyledButton>

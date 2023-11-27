@@ -1,5 +1,5 @@
 import { UploadForm } from "../components/forms/UploadForm";
-import { PageContainer } from "../components/homeContainers/PageContainer";
+import { PageContainer } from "../styled components/homeContainers/PageContainer";
 
 
 export default function UploadPage() {

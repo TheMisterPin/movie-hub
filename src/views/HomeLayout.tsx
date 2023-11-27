@@ -5,41 +5,45 @@ import {  Genre, Movie } from '../types/MoviesContextType';
 import { MovieCard } from '../components/card/MovieCard';
 import NavBar from '../styled components/elements/NavBar';
 // import { RecentGrid } from '../components/homeContainers/FavoritesGrid';
-import { PageContainer } from '../components/homeContainers/PageContainer';
-import { ScrollableRowComponent } from '../components/homeContainers/ScrollableRow';
+import { PageContainer } from '../styled components/homeContainers/PageContainer';
+import { ScrollableRowComponent } from '../styled components/homeContainers/ScrollableRow';
 
 import { useNavigate } from 'react-router-dom'; // Importing useNavigate
+const GenreCarousel= styled(ScrollableRowComponent)`
+display: flex;`
 
-const GenreButton = styled.button<{ style?: React.CSSProperties }>`
-  display: flex;
-  flex-wrap: wrap;
+const HomePageContainer= styled(PageContainer)`
+gap: 2rem;
+align-items: center;
+justify-content: center;
+`
+
+const GenreButton = styled.button<{ style?: React.CSSProperties }>`  
   gap: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
   justify-content: center;
   align-items: center;
-  width: 35%;
+  min-width: 40vw;
   border-radius: 23px;
   min-height: 100px;
   background-size: cover;
   background-position: center;
-  cursor: pointer; /* To make it look clickable */
-`;
+  cursor: pointer`
 
 const GenreCardContent = styled.span`
   color: white;
-  font-size: 7 rem;
-`;
+  font-size: 12 rem;`
 
 const GenreCard = (props: { genre: string, image: string }) => {
   const navigate = useNavigate();
 
   const navigateToGenre = () => {
-    navigate(`/genres/${props.genre}`);
+    navigate(`/genres/"${props.genre}"`);
   };
 
   const buttonStyle = {
-    backgroundImage: `url(${props.image})`,
+    backgroundImage: `url("${props.image}")`,
   };
 
   return (
@@ -59,7 +63,7 @@ export const HomeLayout: React.FC = () => {
       result.push(arrayCopy[randomIndex]);
       arrayCopy.splice(randomIndex, 1); // Remove the selected movie
     }
-    return result;
+    return result
   }
 
   const listOne: Movie[] = getRandomMovies(movies, 5);
@@ -74,7 +78,7 @@ export const HomeLayout: React.FC = () => {
   
 
   return (
-    <PageContainer>
+    <HomePageContainer>
 
       <h1>MovieHub</h1>
      
@@ -110,6 +114,6 @@ export const HomeLayout: React.FC = () => {
         ))}
       </ScrollableRowComponent>
       <NavBar/>
-    </PageContainer>
+    </HomePageContainer>
   );
 };

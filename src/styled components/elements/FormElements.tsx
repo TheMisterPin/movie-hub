@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { UseFormRegister } from 'react-hook-form';
 import styled from 'styled-components';
 import { UserLoginData } from '../../types/UserLoginData';
+import { getRandomMovies } from '../homeContainers/ScrollableRow';
+import { Movie, MovieCard } from '../../components/card/MovieCard';
+import { ScrollableRowComponent } from '../homeContainers/ScrollableRow';
+import { useMovies } from '../../context/MovieContext';
 
 const EyeOpenIconURL = "https://img.icons8.com/ios-filled/50/FFFFFF/visible--v1.png";
 const EyeClosedIconURL = "https://img.icons8.com/ios-filled/50/FFFFFF/hide--v1.png";
@@ -93,5 +97,19 @@ flex-direction: column;
 gap: 1.5rem;
 
 
-`
+`;
+export const UserMoviesContainer = () => {
+const {movies} = useMovies()
+  const listOne: Movie[] = getRandomMovies(movies, 5);
+  return (
+    <div>
+      <h2>your uploaded movies</h2>
+      <ScrollableRowComponent>
+        {listOne.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} variant="card" />
+        ))}
+      </ScrollableRowComponent>
+    </div>
+  );
+};
 

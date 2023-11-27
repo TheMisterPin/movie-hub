@@ -5,7 +5,7 @@ import { MovieFormData } from '../../types/MovieFormData';
 import { useMovies } from '../../context/MovieContext';
 import { MovieData } from '../../types/MoviesContextType';
 import FormHeader from '../../styled components/elements/FormHeader copy';
-import { PageContainer } from '../homeContainers/PageContainer';
+import { PageContainer } from '../../styled components/homeContainers/PageContainer';
 import {  useAuth0 } from '@auth0/auth0-react';
 import { useUsers } from '../../context/UserContex';
 

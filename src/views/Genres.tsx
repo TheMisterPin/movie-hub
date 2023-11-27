@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { PageContainer } from "../components/homeContainers/PageContainer";
+import { PageContainer } from "../styled components/homeContainers/PageContainer";
 import { useMovies } from "../context/MovieContext";
 import { FormContainer, PageTitle } from "../styled components";
 import { MovieCard } from '../components/card/MovieCard';

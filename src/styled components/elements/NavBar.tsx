@@ -45,7 +45,7 @@ const Nav = styled.nav`
 margin:0;
 padding: 0 1rem;
 position: sticky;
-  bottom: 0;
+  Top: 88%;
   left: 0;
   z-index: 22;
   display: flex;

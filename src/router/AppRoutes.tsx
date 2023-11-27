@@ -6,10 +6,7 @@ import { Home } from '../views/Home';
 import { SignUpForm } from '../components/forms/SignUpForm';
 import MovieDetails from '../views/MovieDetails';
 import UploadPage from '../views/UploadPage';
-import UserProfile from '../views/UserProfile';
-// import { LoginForm } from '../components/forms/LoginForm';
-
-
+import UserPageMichele from '../views/UserPageMichel';
 
 const AppRoutes: React.FC = () => {
     return (
@@ -20,7 +17,7 @@ const AppRoutes: React.FC = () => {
         <Route path={HOME} element={<Home/>}/>
         <Route path={MOVIEDETAILS} element={<MovieDetails />}/>
         <Route path={UPLOAD} element={<UploadPage />}/>
-        <Route path={USER} element={<UserProfile />}/>
+        <Route path={USER} element={<UserPageMichele />}/>
         <Route path="/" element={<Navigate to={LANDING}/>}/>
       </Routes>
     );
