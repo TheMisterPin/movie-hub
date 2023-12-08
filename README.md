@@ -2,6 +2,7 @@
 
 Welcome to **Movie Hub**, the ultimate movie database app, a master's degree individual project designed to provide a premier cinematic journey at your fingertips.
 
+![Screenshot](https://res.cloudinary.com/dl1fw2gx2/image/upload/v1702036602/Screenshot_2023-11-20_134307_muuasc.png)
 ## Features ✨
 
 - **Secure Log In**: Integrated with Auth0 for your security. 🔐
