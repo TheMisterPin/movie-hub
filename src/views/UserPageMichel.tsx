@@ -1,7 +1,6 @@
-import React from 'react'
 import { PageContainer } from '../styled components/homeContainers/PageContainer'
 import { UserMoviesContainer } from '../styled components/elements/FormElements';
-import { BackButton, PageTitle } from '../styled components'
+import { PageTitle } from '../styled components'
 import styled from 'styled-components'
 
 import { EditComponent } from './EditComponent';
@@ -24,22 +23,21 @@ max-width :100px;
 border-radius: 40%`
 
 export default function UserPageMichele() {
-const {logout} = useAuth0()
+  const { logout } = useAuth0()
 
   return (
-    
+
     <PageContainer>
-    <ProfilePageContainer>
-      <FormHeader text='TheMisterPin'/>
+      <ProfilePageContainer>
+        <FormHeader text='TheMisterPin' />
         <PageTitle></PageTitle>
-         <div style= {{display: 'flex', alignItems: 'center', justifyContent:'center'}}> <UserProfileImage src='https://xsgames.co/randomusers/avatar.php?g=male'/>
-          
-          <EditComponent/></div>
-          <UserMoviesContainer/>
-          
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}> <UserProfileImage src='https://xsgames.co/randomusers/avatar.php?g=male' />
+          <EditComponent /></div>
+        <UserMoviesContainer />
+        <button onClick={() => logout()}>Logout</button>
 
 
 
-    </ProfilePageContainer><NavBar/></PageContainer>
+      </ProfilePageContainer><NavBar /></PageContainer>
   )
 }
