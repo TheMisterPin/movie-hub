@@ -51,7 +51,7 @@ background: ${({ theme }) => theme.colors.primary.soft};
   color: white;
   border-radius: 10px;
   width: 35%;
-  disdplay: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
@@ -83,7 +83,6 @@ const FullScreenCardImage = styled.img`
     inset 0 0 10px rgba(255,255,255,0.1);
 `;
 const BackgroundImage = styled.div<{ poster: string }>`
-
   position: absolute; 
   top: 0;
   left: 0;
@@ -158,8 +157,8 @@ const ListCardDescription = styled(CardDescription)`
   height: 25vw;
   font-size: 1rem;
   display: flex;
-  flex-direction: column
-`;
+  flex-direction: column;
+  `;
 
 const GridCard = styled(Card)`
   height: 5rem;
@@ -250,21 +249,21 @@ const StyledIFrame = styled.iframe`
   width: 100%;
   height: 200px; 
   border-radius: 8px;
-  border: none`
+  border: none;`
 
 
 // Main MovieCard Component
 export const MovieCard: React.FC<MovieCardProps> = ({ movie, variant = "card" }) => {
-  const formatMinutes = useTimeFormatter()
-  const formattedLength = movie.length ? formatMinutes(movie.length) : null;
-  const videoID = movie.trailer ? extractYouTubeID(movie.trailer) : '';
-  const DetailsComponent = variant === "card" ? CardMovieDetails : (variant === "list" ? ListMovieDetalis : (variant === "grid" ? GridMovieDetails : FullScreenCard));
- 
   const CardComponent = variant === "card" ? Card : (variant === "list" ? ListCard : (variant === "grid" ? GridCard : FullScreenCard));
+  const DetailsComponent = variant === "card" ? CardMovieDetails : (variant === "list" ? ListMovieDetalis : (variant === "grid" ? GridMovieDetails : FullScreenCard));
   const ImageComponent = variant === "card" ? CardImage : (variant === "list" ? ListCardImage : (variant === "grid" ? GridCardImage : FullScreenCardImage));
   const DescriptionComponent = variant === "card" ? CardDescription : (variant === "list" ? ListCardDescription : (variant === "grid" ? GridCardDescription : CardDescription));
   const TitleComponent = variant === "card" ? MovieTitle : (variant === "list" ? ListMovieTitle : (variant === "grid" ? GridMovieTitle : FullScreenMovieTitle));
-
+  const formatMinutes = useTimeFormatter()
+  const formattedLength = movie.length ? formatMinutes(movie.length) : null;
+  const videoID = movie.trailer ? extractYouTubeID(movie.trailer) : '';
+ 
+ 
   if (!movie) {
    
     switch (variant) {
