@@ -23,12 +23,32 @@ Welcome to **Movie Hub**, the ultimate movie database app, a master's degree ind
 
 Frontend crafted with care for sleek design and intuitive user experience, backed by a robust and responsive server.
 
+
+
+## Functionality Overview 🛠️
+
+- 🎥 **Movie and Genre State Management**
+  - Manages the state of movies and genres, including selection and fetching of data.
+
+- 🔍 **Dynamic Data Fetching**
+  - Provides functions to fetch movies, genres, movies by genre, and movies by title.
+
+- 🔄 **CRUD Operations**
+  - Supports Create, Read, Update, and Delete operations for movies.
+
+- 🌐 **Server Interaction**
+  - Communicates with the MovieHub Server using Axios for data retrieval and manipulation.
+
+- ⚛️ **React Context and Hooks**
+  - Utilizes React Context for state management and custom hooks for easy access to context data.
+
+
 ## Contribute 🤝
 
 Join us in enhancing the Movie Hub experience. Your feedback and contributions are invaluable.
 
 ---
 
-🌟 Dive into the world of movies with Movie Hub and shape the future of streaming! 🌟
+🌟 Dive into the world of movies with Movie Hub and pickyour next movie! 🌟
 
 ---
